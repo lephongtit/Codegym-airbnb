@@ -79,7 +79,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                         "/login",
                         "/register",
                         "/confirm-account/**",
-                        "/forgot-password",
+                        "/room/**",
                         "/new-password/**",
                         "/users/**",
                         "/host/**",

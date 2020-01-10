@@ -42,7 +42,6 @@ public class HostController {
         if(homeStay1.isPresent()){
             homeStay1.get().setNameHouse(house.getNameHouse());
             homeStay1.get().setCategoryHouse(house.getCategoryHouse());
-            homeStay1.get().setCategoryRoom(house.getCategoryRoom());
             homeStay1.get().setAddress(house.getAddress());
             homeStay1.get().setAmountBathRoom(house.getAmountBathRoom());
             homeStay1.get().setAmountBedRoom(house.getAmountBedRoom());
@@ -58,11 +57,6 @@ public class HostController {
     }
     @PostMapping
     public ResponseEntity<House>createHouse(@RequestBody House house){
-        if (house.getCategoryRoom()!=null){
-            String name= house.getCategoryRoom().getName();
-            CategoryRoom categoryRoom = categoryRoomService.findByNameRoom(name);
-            house.setCategoryRoom(categoryRoom);
-        }
         if (house.getCategoryHouse() != null){
             String nameHouse= house.getCategoryHouse().getName();
             CategoryHouse categoryHouse=categoryHouseService.findByName(nameHouse);
@@ -80,7 +74,6 @@ public class HostController {
 
     }
     @DeleteMapping("/{id}")
-
     public ResponseEntity<Void> delete(@PathVariable("id") Long id){
         Optional<House> homeStay1 = houseService.findById(id);
         if (homeStay1 == null){

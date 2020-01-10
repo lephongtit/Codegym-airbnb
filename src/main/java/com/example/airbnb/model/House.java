@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class House {
+public class  House {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,9 +14,7 @@ public class House {
     @ManyToOne
     @JoinColumn(name = "category_home")
     private CategoryHouse categoryHouse;
-    @ManyToOne
-    @JoinColumn(name = "category_room")
-    private CategoryRoom categoryRoom;
+
     private Long amountBathRoom;
     private Long amountBedRoom;
     private String address;
@@ -33,7 +31,6 @@ public class House {
     public House(String nameHouse, CategoryHouse categoryHouse, CategoryRoom categoryRoom, Long amountBathRoom, Long amountBedRoom, String address, String description, Price price, String imageUrls) {
         this.nameHouse = nameHouse;
         this.categoryHouse = categoryHouse;
-        this.categoryRoom = categoryRoom;
         this.amountBathRoom = amountBathRoom;
         this.amountBedRoom = amountBedRoom;
         this.address = address;
@@ -64,14 +61,6 @@ public class House {
 
     public void setCategoryHouse(CategoryHouse categoryHouse) {
         this.categoryHouse = categoryHouse;
-    }
-
-    public CategoryRoom getCategoryRoom() {
-        return categoryRoom;
-    }
-
-    public void setCategoryRoom(CategoryRoom categoryRoom) {
-        this.categoryRoom = categoryRoom;
     }
 
     public Long getAmountBathRoom() {
