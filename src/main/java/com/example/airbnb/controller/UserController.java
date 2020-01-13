@@ -77,10 +77,10 @@ public class UserController {
         if (roleList.isEmpty()) {
             Role role = new Role();
             role.setId(1L);
-            role.setName("ROLE_USER");
+            role.setName("ROLE_ADMIN");
             roleService.save(role);
         }
-        Role role = roleService.findByName("ROLE_USER");
+        Role role = roleService.findByName("ROLE_ADMIN");
         Set<Role> roles = new HashSet<>();
         roles.add(role);
         user.setRoles(roles);
