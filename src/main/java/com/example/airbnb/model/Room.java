@@ -8,24 +8,24 @@ public class Room {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "house")
-    private  House house;
-
+    private String nameHouse;
+    private String nameHost;
     @ManyToOne
     @JoinColumn(name = "category_room")
     private CategoryRoom categoryRoom;
 
     private String description;
+
+    @Column(columnDefinition = "TEXT")
     private String img;
 
     public Room() {
     }
 
-    public Room(String name, House house, CategoryRoom categoryRoom, String description, String img) {
-        this.name = name;
+    public Room(String nameHouse, String nameHost, CategoryRoom categoryRoom, String description, String img) {
+        this.nameHouse = nameHouse;
+        this.nameHost = nameHost;
         this.categoryRoom = categoryRoom;
         this.description = description;
         this.img = img;
@@ -39,12 +39,20 @@ public class Room {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameHouse() {
+        return nameHouse;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameHouse(String nameHouse) {
+        this.nameHouse = nameHouse;
+    }
+
+    public String getNameHost() {
+        return nameHost;
+    }
+
+    public void setNameHost(String nameHost) {
+        this.nameHost = nameHost;
     }
 
     public CategoryRoom getCategoryRoom() {
@@ -69,13 +77,5 @@ public class Room {
 
     public void setImg(String img) {
         this.img = img;
-    }
-
-    public House getHouse() {
-        return house;
-    }
-
-    public void setHouse(House house) {
-        this.house = house;
     }
 }

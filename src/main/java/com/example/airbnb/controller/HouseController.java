@@ -19,14 +19,12 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/host")
-public class HostController {
+@RequestMapping("/house")
+public class HouseController {
     @Autowired
     private HouseService houseService;
     @Autowired
     private CategoryHouseService categoryHouseService;
-    @Autowired
-    private CategoryRoomService categoryRoomService;
     @Autowired
     private PriceService priceService;
 
@@ -67,9 +65,6 @@ public class HostController {
             priceService.save(price);
         }
         houseService.save(house);
-
-
-
         return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
@@ -82,8 +77,8 @@ public class HostController {
         houseService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @GetMapping("/{id}")
 
+    @GetMapping("/{id}")
     public ResponseEntity<House> findById(@PathVariable Long id){
         Optional<House> homeStay = houseService.findById(id);
         if (homeStay == null){
@@ -93,3 +88,6 @@ public class HostController {
     }
 
 }
+
+
+

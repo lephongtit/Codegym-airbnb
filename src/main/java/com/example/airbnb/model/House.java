@@ -4,6 +4,8 @@ package com.example.airbnb.model;
 
 import javax.persistence.*;
 
+import java.util.Set;
+
 
 @Entity
 public class  House {
@@ -11,9 +13,13 @@ public class  House {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nameHouse;
+
     @ManyToOne
     @JoinColumn(name = "category_home")
     private CategoryHouse categoryHouse;
+
+    @OneToMany(targetEntity = Room.class)
+    Set<Room> rooms;
 
     private Long amountBathRoom;
     private Long amountBedRoom;
@@ -28,9 +34,10 @@ public class  House {
     public House() {
     }
 
-    public House(String nameHouse, CategoryHouse categoryHouse, CategoryRoom categoryRoom, Long amountBathRoom, Long amountBedRoom, String address, String description, Price price, String imageUrls) {
+    public House(String nameHouse, Long amountBathRoom, Long amountBedRoom, String address, String description, Price price, String imageUrls) {
         this.nameHouse = nameHouse;
         this.categoryHouse = categoryHouse;
+        this.rooms = rooms;
         this.amountBathRoom = amountBathRoom;
         this.amountBedRoom = amountBedRoom;
         this.address = address;
@@ -109,5 +116,15 @@ public class  House {
 
     public void setImageUrls(String imageUrls) {
         this.imageUrls = imageUrls;
+    }
+
+
+
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        this.rooms = rooms;
     }
 }

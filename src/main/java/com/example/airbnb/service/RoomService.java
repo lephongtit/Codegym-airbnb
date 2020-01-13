@@ -1,9 +1,7 @@
 package com.example.airbnb.service;
 
 import com.example.airbnb.model.Room;
-import com.example.airbnb.repository.RoomRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface RoomService  {
